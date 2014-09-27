@@ -39,8 +39,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="cb.bmp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/worm.cpp" />
+		<Unit filename="src/worm.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
