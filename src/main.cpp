@@ -1,7 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include "LeapRead.h"
 
 int main()
 {
+    // Create a sample listener and controller
+    SampleListener listener;
+    Controller controller;
+
+    // Have the sample listener receive events from the controller
+    controller.addListener(listener);
+
     // Create the main window
     sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
 
@@ -23,6 +31,9 @@ int main()
                 app.close();
         }
 
+        // Update
+        sprite.setPosition(listener.getAveragePosition());
+
         // Clear screen
         app.clear();
 
@@ -32,6 +43,9 @@ int main()
         // Update the window
         app.display();
     }
+
+    // Remove the sample listener when done
+    controller.removeListener(listener);
 
     return EXIT_SUCCESS;
 }
