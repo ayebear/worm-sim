@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1411855496 source:/home/nulp/code/wormSim/wormsim/main.cpp
+	<SFML/Graphics.hpp>
+
+1411855650 source:/home/nulp/code/wormSim/wormsim/src/Worm.cpp
+	"Worm.h"
+
+1411855650 /home/nulp/code/wormSim/wormsim/include/Worm.h
+
