@@ -21,8 +21,7 @@ class Level: public sf::Drawable , public sf::Transformable
         void spawnRock(float);
         void spawnFood(float);
         void reapObjects();
-        bool makerock;
-        bool makefood;
+        void gameOver();
         std::deque<sf::Sprite> rocks;
         std::deque<sf::Sprite> foods;
         sf::Sprite background;

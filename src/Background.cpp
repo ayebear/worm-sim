@@ -1,4 +1,6 @@
 #include "Background.h"
+#include <SFML/Graphics.hpp>
+#include "windowsize.h"
 
 Background::Background()
 {

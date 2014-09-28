@@ -49,9 +49,15 @@ sf::Vector2f Level::getFoodPos()
     return this->foodpos;
 }
 
-sf::Vector2f Level::getRockPos()
+sf::Vector2f Level::getRockPositions(float wormY)
 {
-    return this->rockpos;
+    for(auto a : rocks)
+    {
+        if(a.GetPosition().y >= wormY - 10 || wormY + 10 <= a.GetPosition().y)
+        {
+            gameOver();
+        }
+    }
 }
 
 void Level::spawnRock(float currentX)
@@ -96,6 +102,9 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 }
 
-
+void Level::gameOver()
+{
+    return;// TODO display you loose!
+}
 
 //########################################################################################################
