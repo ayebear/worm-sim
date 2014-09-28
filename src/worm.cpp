@@ -16,14 +16,21 @@ Worm::Worm():
     }
 
     collided = false;
+
+    aabb.width = 64;
+    aabb.height = 64;
+    collisionBox.setSize(sf::Vector2f(64, 64));
+    collisionBox.setFillColor(sf::Color::Transparent);
+    collisionBox.setOutlineColor(sf::Color::Red);
+    collisionBox.setOutlineThickness(4);
 }
 
 void Worm::setPosition(const sf::Vector2f& pos, float dt)
 {
     wormBody[wormWidth - 2].position = sf::Vector2f(pos.x + (wormWidth / 2) * segmentWidth, pos.y + 100);
     wormBody[wormWidth - 1].position = sf::Vector2f(pos.x + (wormWidth / 2) * segmentWidth, pos.y);
-    position.x = wormBody[wormWidth - 2].position.x;
-    position.y = wormBody[wormWidth - 2].position.y;
+    position.x = wormBody[wormWidth - 1].position.x - 50;
+    position.y = wormBody[wormWidth - 1].position.y + 50;
 
     const float threshold = 1.0f / 16.0f;
     for (int i = wormWidth - 6, x = wormWidth / 2; i >= 0; i -= 4, x -= 2)
@@ -39,6 +46,10 @@ void Worm::setPosition(const sf::Vector2f& pos, float dt)
 
     wormBody[0].position = wormBody[3].position;
     wormBody[1].position = wormBody[2].position;
+
+    aabb.left = position.x;
+    aabb.top = position.y;
+    collisionBox.setPosition(position);
 }
 
 const sf::Vector2f& Worm::getPosition() const
@@ -50,4 +61,10 @@ void Worm::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     //states.texture = &m_texture;
     target.draw(wormBody, states);
+    target.draw(collisionBox, states);
+}
+
+const sf::FloatRect& Worm::getAABB() const
+{
+    return aabb;
 }

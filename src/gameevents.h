@@ -1,0 +1,6 @@
+#ifndef GAMEEVENTS_H_INCLUDED
+#define GAMEEVENTS_H_INCLUDED
+
+struct GameOverEvent {};
+
+#endif // GAMEEVENTS_H_INCLUDED

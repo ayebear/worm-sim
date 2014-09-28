@@ -1,6 +1,8 @@
 #include "game.h"
+#include "events.h"
+#include "gameevents.h"
 
-const float Game::scrollSpeed = 200;
+const float Game::scrollSpeed = 400;
 const unsigned Game::window_width = 800;
 const unsigned Game::window_height = 600;
 
@@ -55,8 +57,8 @@ void Game::update(float dt)
     pos = worm.getPosition();
     view.setCenter(pos.x , 300);
     level.genLevel(pos.x, dt);
+    level.updateObjects(pos.x, worm);
     //view.move(10 * dt, 0);
-
 }
 
 void Game::draw()
@@ -69,8 +71,9 @@ void Game::draw()
     // Draw the sprite
     //window.draw(sprite);
     window.draw(level);
-    window.draw(worm);
 
+    window.setView(view);
+    window.draw(worm);
 
     // Update the window
     window.display();
