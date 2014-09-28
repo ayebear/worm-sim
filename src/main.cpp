@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "LeapRead.h"
-
+#include "worm.h"
 
 int main()
 {
@@ -21,6 +21,7 @@ int main()
     sf::Sprite sprite(texture);
     sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
 
+    Worm worm;
 	// Start the game loop
     while (app.isOpen())
     {
@@ -35,12 +36,14 @@ int main()
 
         // Update
         sprite.setPosition(listener.getAveragePosition());
+        worm.UpdateWorm(app.mapPixelToCoords(sf::Mouse::getPosition()));
 
         // Clear screen
         app.clear();
 
         // Draw the sprite
         app.draw(sprite);
+        app.draw(worm);
 
         // Update the window
         app.display();
