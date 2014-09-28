@@ -16,6 +16,8 @@ class Worm : public sf::Drawable
 
         static const unsigned wormWidth = 10 * 3;
 
+        static const sf::Color wormColor;
+
         //int bodySize;
 };
 

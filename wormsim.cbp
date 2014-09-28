@@ -42,16 +42,25 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 			<Add directory="include" />
+			<Add directory="src/configfile" />
 		</Compiler>
 		<Linker>
 			<Add library="lib/libLeap.so" />
 			<Add directory="lib" />
 		</Linker>
+		<Unit filename="src/configfile/configfile.cpp" />
+		<Unit filename="src/configfile/configfile.h" />
+		<Unit filename="src/configfile/configoption.cpp" />
+		<Unit filename="src/configfile/configoption.h" />
+		<Unit filename="src/configfile/strlib.cpp" />
+		<Unit filename="src/configfile/strlib.h" />
 		<Unit filename="src/game.cpp" />
 		<Unit filename="src/game.h" />
 		<Unit filename="src/leapread.cpp" />
 		<Unit filename="src/leapread.h" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/spriteloader.cpp" />
+		<Unit filename="src/spriteloader.h" />
 		<Unit filename="src/worm.cpp" />
 		<Unit filename="src/worm.h" />
 		<Extensions>

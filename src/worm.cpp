@@ -1,5 +1,7 @@
 #include "worm.h"
 
+const sf::Color Worm::wormColor(255, 165, 140);
+
 Worm::Worm():
     wormBody(sf::TrianglesStrip, wormWidth)
 {
@@ -9,7 +11,7 @@ Worm::Worm():
         if (i % 2 == 0)
             yPos = 200;
         wormBody[i].position = sf::Vector2f(i * 10, yPos);
-        wormBody[i].color = sf::Color(255, 165, 140);
+        wormBody[i].color = wormColor;
     }
 
     collided = false;
@@ -26,8 +28,11 @@ void Worm::setPosition(sf::Vector2f position)
     }
     wormBody = tempPoints;
     wormBody[wormWidth - 3].position = sf::Vector2f(position.x, position.y);
-    wormBody[wormWidth - 2].position = sf::Vector2f(position.x + 10, position.y);
-    wormBody[wormWidth - 1].position = sf::Vector2f(position.x, position.y + 10);
+    wormBody[wormWidth - 3].color = wormColor;
+    wormBody[wormWidth - 2].position = sf::Vector2f(position.x, position.y + 100);
+    wormBody[wormWidth - 2].color = wormColor;
+    wormBody[wormWidth - 1].position = sf::Vector2f(position.x + 100, position.y + 100);
+    wormBody[wormWidth - 1].color = wormColor;
 }
 
 void Worm::draw(sf::RenderTarget& target, sf::RenderStates states) const
