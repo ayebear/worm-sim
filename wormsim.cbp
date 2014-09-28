@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics" />
@@ -27,6 +28,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,7 +40,14 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 		</Compiler>
+		<Linker>
+			<Add library="lib/libLeap.so" />
+			<Add directory="lib" />
+		</Linker>
+		<Unit filename="src/LeapRead.cpp" />
+		<Unit filename="src/LeapRead.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/worm.cpp" />
 		<Unit filename="src/worm.h" />
