@@ -6,7 +6,7 @@ Game::Game()
 {
     // Have the sample listener receive events from the controller
     controller.addListener(listener);
-    sprites.loadFromConfig("data/sprites.txt");
+
     // Create a window
     window.create(sf::VideoMode(800, 600), "Worm Simulator v0.0.1");
     view = window.getDefaultView();
@@ -63,6 +63,7 @@ void Game::draw()
 
     // Draw the sprite
     //window.draw(sprite);
+    window.draw(level);
     window.draw(worm);
 
     // Update the window

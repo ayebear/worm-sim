@@ -2,6 +2,7 @@
 #define LEVEL_H
 #include <time.h>
 #include <SFML/Graphics.hpp>
+#include "spriteloader.h"
 class Level: public sf::Drawable
 {
     public:
@@ -14,10 +15,13 @@ class Level: public sf::Drawable
     private:
         sf::Vector2f rockpos;
         sf::Vector2f foodpos;
+        SpriteLoader sprites;
         void genLevel();
         void genScene();
         void spawnRock();
         void spawnFood();
+        sf::Sprite sprite;
+        sf::Texture texture;
 
 };
 

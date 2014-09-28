@@ -1,9 +1,13 @@
 #include "Level.h"
+#include <SFML/Graphics.hpp>
+#include <iostream>
 
 Level::Level()
 {
     srand(time(NULL));
-
+    if (!texture.loadFromFile("data/dirt.png"));
+    { std::cout<< "Error Loading" << std::endl;}
+    sprite.setTexture(texture);
 }
 
 Level::~Level()
@@ -14,7 +18,7 @@ Level::~Level()
 void Level::genLevel()
 {
 
-
+    genScene();
 }
 
 sf::Vector2f Level::getFoodPos()
@@ -56,8 +60,7 @@ void Level::spawnFood()
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
-
+    target.draw(sprite);
 }
 
 
