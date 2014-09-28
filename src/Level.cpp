@@ -17,6 +17,15 @@ Level::genLevel()
 
 }
 
+sf::Vector2f Level::getFoodPos()
+{
+    return this->foodpos;
+}
+
+sf::Vector2f Level::getRockPos()
+{
+    return this->rockpos;
+}
 
 Level::genScene()
 {
@@ -44,3 +53,11 @@ Level::spawnFood()
         spawnFood();
     }
 }
+
+Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+
+
+}
+
+

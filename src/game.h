@@ -5,6 +5,7 @@
 #include "leapread.h"
 #include "worm.h"
 
+
 class Game
 {
     public:
@@ -20,6 +21,7 @@ class Game
         SampleListener listener;
         Controller controller;
         sf::RenderWindow window;
+        sf::View view;
 
         // Game objects
         Worm worm;
