@@ -11,11 +11,11 @@
 #include <mutex>
 
 void SampleListener::onInit(const Controller& controller) {
-  std::cout << "Initialized" << std::endl;
+  // std::cout << "Initialized" << std::endl;
 }
 
 void SampleListener::onConnect(const Controller& controller) {
-  std::cout << "Connected" << std::endl;
+  // std::cout << "Connected" << std::endl;
   controller.enableGesture(Gesture::TYPE_CIRCLE);
   controller.enableGesture(Gesture::TYPE_KEY_TAP);
   controller.enableGesture(Gesture::TYPE_SCREEN_TAP);
@@ -24,22 +24,22 @@ void SampleListener::onConnect(const Controller& controller) {
 
 void SampleListener::onDisconnect(const Controller& controller) {
   // Note: not dispatched when running in a debugger.
-  std::cout << "Disconnected" << std::endl;
+  // std::cout << "Disconnected" << std::endl;
 }
 
 void SampleListener::onExit(const Controller& controller) {
-  std::cout << "Exited" << std::endl;
+  // std::cout << "Exited" << std::endl;
 }
 
 void SampleListener::onFrame(const Controller& controller) {
   // Get the most recent frame and report some basic information
   const Frame frame = controller.frame();
-  std::cout << "Frame id: " << frame.id()
-            << ", timestamp: " << frame.timestamp()
-            << ", hands: " << frame.hands().count()
-            << ", fingers: " << frame.fingers().count()
-            << ", tools: " << frame.tools().count()
-            << ", gestures: " << frame.gestures().count() << std::endl;
+  // std::cout << "Frame id: " << frame.id()
+//            << ", timestamp: " << frame.timestamp()
+//            << ", hands: " << frame.hands().count()
+//            << ", fingers: " << frame.fingers().count()
+//            << ", tools: " << frame.tools().count()
+//            << ", gestures: " << frame.gestures().count() << std::endl;
 
   if (!frame.hands().isEmpty()) {
     // Get the first hand
@@ -54,26 +54,26 @@ void SampleListener::onFrame(const Controller& controller) {
         avgPos += fingers[i].tipPosition();
       }
       avgPos /= (float)fingers.count();
-      std::cout << "Hand has " << fingers.count()
-                << " fingers, average finger tip position" << avgPos << std::endl;
+      // std::cout << "Hand has " << fingers.count()
+//                << " fingers, average finger tip position" << avgPos << std::endl;
       //mu.lock();
       position.x = avgPos.x * 8 + 400;
-      position.y = avgPos.z * 8 + 300;
+      position.y = avgPos.y * 8 + 300;
       //mu.unlock();
     }
 
     // Get the hand's sphere radius and palm position
-    std::cout << "Hand sphere radius: " << hand.sphereRadius()
-              << " mm, palm position: " << hand.palmPosition() << std::endl;
+    // std::cout << "Hand sphere radius: " << hand.sphereRadius()
+//              << " mm, palm position: " << hand.palmPosition() << std::endl;
 
     // Get the hand's normal vector and direction
-    const Vector normal = hand.palmNormal();
-    const Vector direction = hand.direction();
+//    const Vector normal = hand.palmNormal();
+//    const Vector direction = hand.direction();
 
     // Calculate the hand's pitch, roll, and yaw angles
-    std::cout << "Hand pitch: " << direction.pitch() * RAD_TO_DEG << " degrees, "
-              << "roll: " << normal.roll() * RAD_TO_DEG << " degrees, "
-              << "yaw: " << direction.yaw() * RAD_TO_DEG << " degrees" << std::endl;
+    // std::cout << "Hand pitch: " << direction.pitch() * RAD_TO_DEG << " degrees, "
+//              << "roll: " << normal.roll() * RAD_TO_DEG << " degrees, "
+//              << "yaw: " << direction.yaw() * RAD_TO_DEG << " degrees" << std::endl;
   }
 
   // Get gestures
@@ -94,81 +94,80 @@ void SampleListener::onFrame(const Controller& controller) {
         }
 
         // Calculate angle swept since last frame
-        float sweptAngle = 0;
         if (circle.state() != Gesture::STATE_START) {
           CircleGesture previousUpdate = CircleGesture(controller.frame(1).gesture(circle.id()));
-          sweptAngle = (circle.progress() - previousUpdate.progress()) * 2 * PI;
+          //float sweptAngle = (circle.progress() - previousUpdate.progress()) * 2 * PI;
         }
-        std::cout << "Circle id: " << gesture.id()
-                  << ", state: " << gesture.state()
-                  << ", progress: " << circle.progress()
-                  << ", radius: " << circle.radius()
-                  << ", angle " << sweptAngle * RAD_TO_DEG
-                  <<  ", " << clockwiseness << std::endl;
+        // std::cout << "Circle id: " << gesture.id()
+//                  << ", state: " << gesture.state()
+//                  << ", progress: " << circle.progress()
+//                  << ", radius: " << circle.radius()
+//                  << ", angle " << sweptAngle * RAD_TO_DEG
+//                  <<  ", " << clockwiseness << std::endl;
         break;
       }
       case Gesture::TYPE_SWIPE:
       {
         SwipeGesture swipe = gesture;
-        std::cout << "Swipe id: " << gesture.id()
-          << ", state: " << gesture.state()
-          << ", direction: " << swipe.direction()
-          << ", speed: " << swipe.speed() << std::endl;
+        // std::cout << "Swipe id: " << gesture.id()
+//          << ", state: " << gesture.state()
+//          << ", direction: " << swipe.direction()
+//          << ", speed: " << swipe.speed() << std::endl;
         break;
       }
       case Gesture::TYPE_KEY_TAP:
       {
         KeyTapGesture tap = gesture;
-        std::cout << "Key Tap id: " << gesture.id()
-          << ", state: " << gesture.state()
-          << ", position: " << tap.position()
-          << ", direction: " << tap.direction()<< std::endl;
+        // std::cout << "Key Tap id: " << gesture.id()
+//          << ", state: " << gesture.state()
+//          << ", position: " << tap.position()
+//          << ", direction: " << tap.direction()<< std::endl;
         break;
       }
       case Gesture::TYPE_SCREEN_TAP:
       {
         ScreenTapGesture screentap = gesture;
-        std::cout << "Screen Tap id: " << gesture.id()
-        << ", state: " << gesture.state()
-        << ", position: " << screentap.position()
-        << ", direction: " << screentap.direction()<< std::endl;
+        // std::cout << "Screen Tap id: " << gesture.id()
+//        << ", state: " << gesture.state()
+//        << ", position: " << screentap.position()
+//        << ", direction: " << screentap.direction()<< std::endl;
         break;
       }
       default:
-        std::cout << "Unknown gesture type." << std::endl;
+        // std::cout << "Unknown gesture type." << std::endl;
         break;
     }
   }
 
   if (!frame.hands().isEmpty() || !gestures.isEmpty()) {
-    std::cout << std::endl;
+    // std::cout << std::endl;
   }
 }
 
 void SampleListener::onFocusGained(const Controller& controller) {
-  std::cout << "Focus Gained" << std::endl;
+  // std::cout << "Focus Gained" << std::endl;
 }
 
 void SampleListener::onFocusLost(const Controller& controller) {
-  std::cout << "Focus Lost" << std::endl;
+  // std::cout << "Focus Lost" << std::endl;
 }
 
 void SampleListener::onDeviceChange(const Controller& controller) {
-  std::cout << "Device Changed" << std::endl;
+  // std::cout << "Device Changed" << std::endl;
   const DeviceList devices = controller.devices();
 
   for (int i = 0; i < devices.count(); ++i) {
-    std::cout << "id: " << devices[i].toString() << std::endl;
-    std::cout << "  isStreaming: " << (devices[i].isStreaming() ? "true" : "false") << std::endl;
+    // std::cout << "id: " << devices[i].toString() << std::endl;
+    // std::cout << "  isStreaming: " << (devices[i].isStreaming() ? "true" : "false") << std::endl;
   }
 }
 
 void SampleListener::onServiceConnect(const Controller& controller) {
-  std::cout << "Service Connected" << std::endl;
+  // std::cout << "Service Connected" << std::endl;
 }
 
 void SampleListener::onServiceDisconnect(const Controller& controller) {
-  std::cout << "Service Disconnected" << std::endl;
+  // std::cout << "Service Disconnected" << std::endl;
 }
 
 sf::Vector2f SampleListener::getAveragePosition() const
