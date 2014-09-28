@@ -49,6 +49,7 @@ void Game::update(float dt)
     auto pos = listener.getAveragePosition();
     pos.x = currentX;
     worm.setPosition(pos, dt);
+    pos = worm.getPosition();
     view.setCenter(pos.x , 300);
     //view.move(10 * dt, 0);
 
