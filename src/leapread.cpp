@@ -58,7 +58,7 @@ void SampleListener::onFrame(const Controller& controller) {
 //                << " fingers, average finger tip position" << avgPos << std::endl;
       //mu.lock();
       position.x = avgPos.x * 8 + 400;
-      position.y = avgPos.y * 8 + 300;
+      position.y = avgPos.y * 3 - 200;
       //mu.unlock();
     }
 
