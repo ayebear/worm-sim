@@ -36,20 +36,25 @@ void Worm::setPosition(const sf::Vector2f& pos, float dt)
 //    wormBody[wormWidth - 1].position = sf::Vector2f(position.x + 100, position.y + 100);
 //    wormBody[wormWidth - 1].color = wormColor;
 
-    wormBody[wormWidth - 2].position = sf::Vector2f(pos.x + wormWidth / 2, pos.y + 100);
-    wormBody[wormWidth - 1].position = sf::Vector2f(pos.x + wormWidth / 2, pos.y);
+    wormBody[wormWidth - 2].position = sf::Vector2f(pos.x + (wormWidth / 2 - 3) * 10, pos.y + 100);
+    wormBody[wormWidth - 1].position = sf::Vector2f(pos.x + (wormWidth / 2 - 3) * 10, pos.y);
+    position.x = wormBody[wormWidth - 2].position.x;
+    position.y = wormBody[wormWidth - 2].position.y;
 
-    //const float threshold = 0.5;
-    for (int i = wormWidth - 6, x = wormWidth / 2 - 3; i >= 4; i -= 4, x -= 2)
+    const float threshold = 0.125;
+    for (int i = wormWidth - 6, x = wormWidth / 2 - 3; i >= 0; i -= 4, x -= 2)
     {
         float posDiff = wormBody[i + 5].position.y - wormBody[i + 1].position.y;
-        wormBody[i + 1].position = sf::Vector2f(pos.x + x * 10, posDiff * dt);
+        wormBody[i + 1].position = sf::Vector2f(pos.x + x * 10, wormBody[i + 1].position.y + ((posDiff * dt) / threshold));
         wormBody[i + 2].position = wormBody[i + 1].position;
 
         posDiff = wormBody[i + 4].position.y - wormBody[i].position.y;
-        wormBody[i].position = sf::Vector2f(pos.x + x * 10, posDiff * dt);
+        wormBody[i].position = sf::Vector2f(pos.x + x * 10, wormBody[i].position.y + ((posDiff * dt) / threshold ));
         wormBody[i + 3].position = wormBody[i].position;
     }
+
+    wormBody[0].position = wormBody[3].position;
+    wormBody[1].position = wormBody[2].position;
 }
 
 const sf::Vector2f& Worm::getPosition() const
