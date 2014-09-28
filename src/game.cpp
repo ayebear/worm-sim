@@ -41,7 +41,7 @@ void Game::handleInput()
 void Game::update(float dt)
 {
     //sprite.setPosition(listener.getAveragePosition());
-    //worm.UpdateWorm(window.mapPixelToCoords(sf::Mouse::getPosition()));
+    //worm.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition()));
     worm.setPosition(listener.getAveragePosition());
 }
 

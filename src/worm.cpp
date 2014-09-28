@@ -17,11 +17,17 @@ Worm::Worm():
 
 void Worm::setPosition(sf::Vector2f position)
 {
-    wormBody[0].position = position;
-    for (unsigned i = 0; i < wormWidth; ++i)
+    sf::VertexArray tempPoints(sf::TrianglesStrip, wormWidth);
+    //wormBody[0].position = position;
+    for (unsigned i = 0; i < wormWidth - 3; ++i)
     {
-        //wormBody[i]
+        //wormBody[i].position = (wormBody[i].position + wormBody[i + 1].position);
+        tempPoints[i] = wormBody[i + 3];
     }
+    wormBody = tempPoints;
+    wormBody[wormWidth - 3].position = sf::Vector2f(position.x, position.y);
+    wormBody[wormWidth - 2].position = sf::Vector2f(position.x + 10, position.y);
+    wormBody[wormWidth - 1].position = sf::Vector2f(position.x, position.y + 10);
 }
 
 void Worm::draw(sf::RenderTarget& target, sf::RenderStates states) const
