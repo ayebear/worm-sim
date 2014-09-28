@@ -11,7 +11,7 @@ Level::~Level()
     //dtor
 }
 
-Level::genLevel()
+void Level::genLevel()
 {
 
 
@@ -27,7 +27,7 @@ sf::Vector2f Level::getRockPos()
     return this->rockpos;
 }
 
-Level::genScene()
+void Level::genScene()
 {
     if((rand() % 100 ) < 33) // chance to spawn rock 33%
     {
@@ -41,20 +41,20 @@ Level::genScene()
 
 }
 
-Level::spawnRock()
+void Level::spawnRock()
 {
-    this->rockpos = rand() % 100; // Find out what good max is
+    rockpos.y = rand() % 100; // Find out what good max is
 }
 
-Level::spawnFood()
+void Level::spawnFood()
 {
-    if(this->rockpos == (this->foodpos = rand() % 100))// run again if values are the same
+    if(rockpos.y == (foodpos.y = rand() % 100))// run again if values are the same
     {
         spawnFood();
     }
 }
 
-Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 
 

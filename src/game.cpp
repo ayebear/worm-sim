@@ -1,12 +1,15 @@
 #include "game.h"
 
+const float Game::scrollSpeed = 200;
+
 Game::Game()
 {
     // Have the sample listener receive events from the controller
     controller.addListener(listener);
-
+    sprites.loadFromConfig("data/sprites.txt");
     // Create a window
     window.create(sf::VideoMode(800, 600), "Worm Simulator v0.0.1");
+    view = window.getDefaultView();
 }
 
 Game::~Game()
@@ -42,7 +45,13 @@ void Game::update(float dt)
 {
     //sprite.setPosition(listener.getAveragePosition());
     //worm.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition()));
-    worm.setPosition(listener.getAveragePosition());
+    currentX += dt * scrollSpeed;
+    auto pos = listener.getAveragePosition();
+    pos.x = currentX;
+    worm.setPosition(pos);
+    view.setCenter(pos.x , 300);
+    //view.move(10 * dt, 0);
+
 }
 
 void Game::draw()

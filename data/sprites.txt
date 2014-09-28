@@ -1,0 +1,3 @@
+worm = data/wormlink.png
+food = data/food.png
+rock = data/rock.png

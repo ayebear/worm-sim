@@ -17,8 +17,9 @@ Worm::Worm():
     collided = false;
 }
 
-void Worm::setPosition(sf::Vector2f position)
+void Worm::setPosition(const sf::Vector2f& pos)
 {
+    position = pos;
     sf::VertexArray tempPoints(sf::TrianglesStrip, wormWidth);
     //wormBody[0].position = position;
     for (unsigned i = 0; i < wormWidth - 3; ++i)
@@ -33,6 +34,11 @@ void Worm::setPosition(sf::Vector2f position)
     wormBody[wormWidth - 2].color = wormColor;
     wormBody[wormWidth - 1].position = sf::Vector2f(position.x + 100, position.y + 100);
     wormBody[wormWidth - 1].color = wormColor;
+}
+
+const sf::Vector2f& Worm::getPosition() const
+{
+    return position;
 }
 
 void Worm::draw(sf::RenderTarget& target, sf::RenderStates states) const
