@@ -5,9 +5,11 @@
 Level::Level()
 {
     srand(time(NULL));
-    if (!texture.loadFromFile("data/dirt.png"));
+    if (!bg.loadFromFile("data/dirt.png") || !f.loadFromFile("data/food.png") || !r.loadFromFile("data/rock.png"))
     { std::cout<< "Error Loading" << std::endl;}
-    sprite.setTexture(texture);
+    background.setTexture(bg);
+    rock.setTexture(r);
+    food.setTexture(f);
 }
 
 Level::~Level()
@@ -60,7 +62,7 @@ void Level::spawnFood()
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(sprite);
+    target.draw(background);
 }
 
 

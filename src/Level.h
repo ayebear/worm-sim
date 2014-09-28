@@ -20,8 +20,12 @@ class Level: public sf::Drawable
         void genScene();
         void spawnRock();
         void spawnFood();
-        sf::Sprite sprite;
-        sf::Texture texture;
+        sf::Sprite background;
+        sf::Sprite rock;
+        sf::Sprite food;
+        sf::Texture bg;
+        sf::Texture r;
+        sf::Texture f;
 
 };
 
