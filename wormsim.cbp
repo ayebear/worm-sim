@@ -41,13 +41,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
 			<Add library="lib/libLeap.so" />
 			<Add directory="lib" />
 		</Linker>
-		<Unit filename="src/LeapRead.cpp" />
-		<Unit filename="src/LeapRead.h" />
+		<Unit filename="src/game.cpp" />
+		<Unit filename="src/game.h" />
+		<Unit filename="src/leapread.cpp" />
+		<Unit filename="src/leapread.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/worm.cpp" />
 		<Unit filename="src/worm.h" />

@@ -7,16 +7,16 @@ class Worm : public sf::Drawable
 {
     public:
         Worm();
-        virtual ~Worm();
-        void UpdateWorm(sf::Vector2f position);
+        void setPosition(sf::Vector2f position);
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    protected:
 
     private:
         sf::VertexArray wormBody;
         bool collided;
 
+        static const unsigned wormWidth = 10 * 3;
+
         //int bodySize;
 };
 
-#endif // WORM_H
+#endif
