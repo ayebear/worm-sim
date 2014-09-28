@@ -10,6 +10,8 @@ Level::Level()
     background.setTexture(bg);
     rock.setTexture(r);
     food.setTexture(f);
+    makefood = false;
+    makerock = false;
 }
 
 Level::~Level()
@@ -35,14 +37,17 @@ sf::Vector2f Level::getRockPos()
 
 void Level::genScene()
 {
+    makefood = false;
+    makerock = false;
+
     if((rand() % 100 ) < 33) // chance to spawn rock 33%
     {
-        spawnRock();
+        makerock = true;
     }
 
     if((rand() % 100) < 33) //chance to spawn food
     {
-        spawnFood();
+        makefood = true;
     }
 
 }
@@ -63,6 +68,8 @@ void Level::spawnFood()
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(background);
+    if(makerock) {target.draw(rock);}
+    if(makefood) {target.draw(food);}
 }
 
 
