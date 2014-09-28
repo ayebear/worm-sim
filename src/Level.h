@@ -3,8 +3,8 @@
 #include <time.h>
 #include <SFML/Graphics.hpp>
 #include <deque>
-#include "spriteloader.h"
-class Level: public sf::Drawable
+#include "TileMap.cpp"
+class Level: public sf::Drawable , public sf::Transformable
 {
     public:
         Level();
@@ -17,7 +17,6 @@ class Level: public sf::Drawable
     private:
         sf::Vector2f rockpos;
         sf::Vector2f foodpos;
-        SpriteLoader sprites;
         void genScene();
         void spawnRock(float);
         void spawnFood(float);
@@ -30,6 +29,7 @@ class Level: public sf::Drawable
         sf::Texture bg;
         sf::Texture r;
         sf::Texture f;
+        sf::VertexArray quad;
 
 };
 

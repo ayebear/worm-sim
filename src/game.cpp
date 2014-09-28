@@ -69,7 +69,9 @@ void Game::draw()
     // Draw the sprite
     //window.draw(sprite);
     window.draw(level);
+    window.draw();
     window.draw(worm);
+
 
     // Update the window
     window.display();

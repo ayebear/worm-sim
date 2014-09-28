@@ -7,13 +7,23 @@
 Level::Level()
 {
     srand(time(NULL));
-    if (!bg.loadFromFile("data/dirt.png") || !f.loadFromFile("data/food.png") || !r.loadFromFile("data/rock.png"))
+    if (!f.loadFromFile("data/food.png") || !r.loadFromFile("data/rock.png"))
     { std::cout<< "Error Loading" << std::endl;}
-    background.setTexture(bg);
+    //background.setTexture(bg);
     rocks.push_front(sf::Sprite()); // adds rock sprite to list
     rocks.front().setTexture(r);
     foods.push_front(sf::Sprite()); // adds food sprite to list
     foods.front().setTexture(f);
+    quad(sf::Quads, 4);
+    quad[0].position = sf::Vector2f(0, 0);
+    quad[1].position = sf::Vector2f(WindowSize::window_width, 0);
+    quad[3].position = sf::Vector2f(WindowSize::window_width, WindowSize::window_height);
+    quad[4].position = sf::Vector2f(0, WindowSize::window_height);
+
+    quad[0].texCoords = sf::Vector2f(0, 0);
+    quad[1].texCoords = sf::Vector2f(200, 0);
+    quad[2].texCoords = sf::Vector2f(200, 400);
+    quad[3].texCoords = sf::Vector2f(0, 400);
 }
 
 Level::~Level()
@@ -46,7 +56,7 @@ sf::Vector2f Level::getRockPos()
 
 void Level::spawnRock(float currentX)
 {
-    if((rand() % 100 ) <33) // chance to spawn rock 33%
+    if((rand() % 100 ) < 33) // chance to spawn rock 33%
     {
         rocks.push_front(sf::Sprite()); // adds rock sprite to list
         rocks.front().setTexture(r);
@@ -87,3 +97,5 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 
+
+//########################################################################################################
