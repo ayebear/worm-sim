@@ -15,7 +15,7 @@ class Worm : public sf::Drawable
         bool collided;
         sf::Vector2f position;
         static const unsigned wormWidth = 50 * 4;
-        static const unsigned segmentWidth = 5;
+        static const unsigned segmentWidth = 4;
 
         static const sf::Color wormColor;
 

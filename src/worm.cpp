@@ -25,7 +25,7 @@ void Worm::setPosition(const sf::Vector2f& pos, float dt)
     position.x = wormBody[wormWidth - 2].position.x;
     position.y = wormBody[wormWidth - 2].position.y;
 
-    const float threshold = 0.125;
+    const float threshold = 1.0f / 16.0f;
     for (int i = wormWidth - 6, x = wormWidth / 2; i >= 0; i -= 4, x -= 2)
     {
         float posDiff = wormBody[i + 5].position.y - wormBody[i + 1].position.y;
