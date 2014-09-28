@@ -1,6 +1,8 @@
 #include "game.h"
 
 const float Game::scrollSpeed = 200;
+const unsigned Game::window_width = 800;
+const unsigned Game::window_height = 600;
 
 Game::Game()
 {
@@ -8,8 +10,9 @@ Game::Game()
     controller.addListener(listener);
 
     // Create a window
-    window.create(sf::VideoMode(800, 600), "Worm Simulator v0.0.1");
+    window.create(sf::VideoMode(window_width, window_height), "Worm Simulator v0.0.2");
     view = window.getDefaultView();
+
 }
 
 Game::~Game()
@@ -51,6 +54,7 @@ void Game::update(float dt)
     worm.setPosition(pos, dt);
     pos = worm.getPosition();
     view.setCenter(pos.x , 300);
+    level.genLevel(pos.x);
     //view.move(10 * dt, 0);
 
 }

@@ -12,7 +12,9 @@ class Game
         Game();
         ~Game();
         void start();
-
+        static const unsigned window_width;
+        static const unsigned window_height;
+        float currentX;
     private:
         void handleInput();
         void update(float dt);
@@ -23,9 +25,10 @@ class Game
         sf::RenderWindow window;
         sf::View view;
         static const float scrollSpeed;
+
         // Game objects
         Worm worm;
-        float currentX;
+
 };
 
 #endif
