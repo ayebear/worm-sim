@@ -3,6 +3,7 @@
 
 #include "Leap.h"
 #include <SFML/Graphics.hpp>
+#include <mutex>
 using namespace Leap;
 
 class SampleListener : public Listener
@@ -20,8 +21,8 @@ public:
     virtual void onServiceDisconnect(const Controller&);
 
     sf::Vector2f getAveragePosition() const;
-
 private:
+    std::mutex mu;
     sf::Vector2f position;
 };
 

@@ -1,11 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "LeapRead.h"
 
+
 int main()
 {
     // Create a sample listener and controller
     SampleListener listener;
     Controller controller;
+
 
     // Have the sample listener receive events from the controller
     controller.addListener(listener);
@@ -31,8 +33,10 @@ int main()
                 app.close();
         }
 
+        mu.lock();
         // Update
         sprite.setPosition(listener.getAveragePosition());
+        mu.unlock();
 
         // Clear screen
         app.clear();
