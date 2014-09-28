@@ -47,6 +47,8 @@ void Game::update(float dt)
 
 void Game::draw()
 {
+    window.setView(view);
+
     // Clear screen
     window.clear();
 
