@@ -9,26 +9,24 @@ class Level: public sf::Drawable , public sf::Transformable
     public:
         Level();
         virtual ~Level();
-        sf::Vector2f getRockPos();
+        sf::Vector2f getRockPositions(float);
         sf::Vector2f getFoodPos();
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-        void genLevel(float);
-    protected:
+        void genLevel(float, float);
+
     private:
-        sf::Vector2f rockpos;
-        sf::Vector2f foodpos;
         void genScene();
-        void spawnRock(float);
-        void spawnFood(float);
+        void spawnRock(float, float);
+        void spawnFood(float, float);
         void reapObjects();
         void gameOver();
+
         std::deque<sf::Sprite> rocks;
         std::deque<sf::Sprite> foods;
-        sf::Sprite background;
-        sf::Texture bg;
+        std::vector<sf::Sprite> backgrounds;
+        sf::Texture bgTexture;
         sf::Texture r;
         sf::Texture f;
-        sf::VertexArray quad;
 
 };
 

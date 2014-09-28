@@ -54,7 +54,7 @@ void Game::update(float dt)
     worm.setPosition(pos, dt);
     pos = worm.getPosition();
     view.setCenter(pos.x , 300);
-    level.genLevel(pos.x);
+    level.genLevel(pos.x, dt);
     //view.move(10 * dt, 0);
 
 }
@@ -69,7 +69,6 @@ void Game::draw()
     // Draw the sprite
     //window.draw(sprite);
     window.draw(level);
-    window.draw();
     window.draw(worm);
 
 
