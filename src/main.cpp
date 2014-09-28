@@ -8,7 +8,6 @@ int main()
     SampleListener listener;
     Controller controller;
 
-
     // Have the sample listener receive events from the controller
     controller.addListener(listener);
 
@@ -20,6 +19,7 @@ int main()
     if (!texture.loadFromFile("data/wormlink.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
+    sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
 
 	// Start the game loop
     while (app.isOpen())
@@ -33,10 +33,8 @@ int main()
                 app.close();
         }
 
-        mu.lock();
         // Update
         sprite.setPosition(listener.getAveragePosition());
-        mu.unlock();
 
         // Clear screen
         app.clear();

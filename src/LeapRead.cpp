@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "LeapRead.h"
+#include <mutex>
 
 void SampleListener::onInit(const Controller& controller) {
   std::cout << "Initialized" << std::endl;
@@ -55,10 +56,10 @@ void SampleListener::onFrame(const Controller& controller) {
       avgPos /= (float)fingers.count();
       std::cout << "Hand has " << fingers.count()
                 << " fingers, average finger tip position" << avgPos << std::endl;
-      mu.lock();
-      position.x = avgPos.x;
-      position.y = avgPos.z;
-      mu.unlock();
+      //mu.lock();
+      position.x = avgPos.x * 8 + 400;
+      position.y = avgPos.z * 8 + 300;
+      //mu.unlock();
     }
 
     // Get the hand's sphere radius and palm position
@@ -172,5 +173,6 @@ void SampleListener::onServiceDisconnect(const Controller& controller) {
 
 sf::Vector2f SampleListener::getAveragePosition() const
 {
+    //std::lock_guard<std::mutex> lock(mu);
     return position;
 }

@@ -22,7 +22,7 @@ public:
 
     sf::Vector2f getAveragePosition() const;
 private:
-    std::mutex mu;
+    mutable std::mutex mu;
     sf::Vector2f position;
 };
 
