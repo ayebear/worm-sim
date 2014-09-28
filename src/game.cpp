@@ -48,7 +48,7 @@ void Game::update(float dt)
     currentX += dt * scrollSpeed;
     auto pos = listener.getAveragePosition();
     pos.x = currentX;
-    worm.setPosition(pos);
+    worm.setPosition(pos, dt);
     view.setCenter(pos.x , 300);
     //view.move(10 * dt, 0);
 
