@@ -51,8 +51,12 @@ sf::Vector2f Level::getFoodPos()
 
 sf::Vector2f Level::getRockPositions(float wormY)
 {
-    for(auto a : rocks)
+    for(auto & a : rocks)
     {
+        if(a.getPosition().x < WindowSize::window_width)vertices.setPrimitiveType)
+        {
+            rocks.erase(a);
+        }
         if(a.getPosition().y >= wormY - 10 || wormY + 10 <= a.getPosition().y)
         {
             gameOver();
